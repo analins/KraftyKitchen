@@ -6,7 +6,7 @@ api.factory('usersApi', ['$http', function ($http) {
   var baseUrl = '/api/users';
   var usersApiInterface = {};
 
-  usersInterface.getAll = function () {
+  usersApiInterface.getAll = function () {
     return $http.get(baseUrl);
   }
 
@@ -21,14 +21,14 @@ api.factory('usersApi', ['$http', function ($http) {
     return $http.put(url, payload);
   }
 
-  usersInterface.delete = function (id) {
+  usersApiInterface.delete = function (id) {
     var url = baseUrl + '/' + id;
     return $http.delete(url);
   }
 
   usersApiInterface.logIn = function (loginInfo) {
     var url = baseUrl + '/authenticate';
-    return (url, loginInfo);
+    return $http.post(url, loginInfo);
   }
 
 

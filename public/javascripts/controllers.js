@@ -1,11 +1,17 @@
-
-var main = angular.module('MainController', []);
+var main = angular.module('mainController', []);
 
   main.controller('mainController', ['$scope', 'usersApi', function ($scope, usersApi) {
 
     $scope.users = [];
 
-    $scope.newUser = {}
+    $scope.newUser = {
+      // username: null,
+      // password: null,
+      // token: null,
+      // name: null,
+      // email: null,
+      // newsletter: null
+    }
 
     $scope.masterUser = angular.copy($scope.newUser);
 
@@ -17,7 +23,8 @@ var main = angular.module('MainController', []);
 
     //can createUser go here or does it need to go with the login functionality??
     $scope.createUser = function () {
-      usersApi.createUser($scope.newUser).then(function () {
+      usersApi.createUser($scope.newUser).then(function (response) {
+        console.log(response);
         $scope.getUsers();
         $scope.newUser = angular.copy($scope.masterUser);
       });
@@ -44,18 +51,21 @@ var main = angular.module('MainController', []);
 var login = angular.module('loginController', []);
 
   login.controller('loginController', ['$scope', 'usersApi', '$cookies', function ($scope, usersApi, $cookies) {
+    $scope.users = [];
     $scope.loginInfo = {};
 
-    $scope.logIn = function (logininInfo) {
+    $scope.signIn = function () {
       usersApi.logIn($scope.loginInfo).then(function (response) {
         var token = response.data.token;
+        console.log(token);
         $cookies.put('token', token);
         $scope.loginInfo = {};
-      })
+      });
     }
 
     $scope.logOut = function () {
       $cookies.remove('token');
+      console.log('logged out');
     }
 
 }]);

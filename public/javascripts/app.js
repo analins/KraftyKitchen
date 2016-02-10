@@ -1,6 +1,7 @@
-var app = angular.module('kraftyApp', [
+var kraftyApp = angular.module('kraftyApp', [
   'ngCookies',
   'ngRoute',
+  'mainController',
   'loginController',
   'usersApiFactory'
 ]);

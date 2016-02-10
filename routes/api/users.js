@@ -18,6 +18,7 @@ router.get('/:id', function (req, res, next) {
 
 router.post('/', function (req, res) {
   var newUser = new User(req.body.user);
+  console.log(req.body);
   newUser.save(function (err, dbUser) {
     console.log(dbUser);
     res.json(dbUser);
@@ -31,11 +32,13 @@ router.post('/authenticate', function (req, res) {
       dbUser.authenticate(req.body.password, function (err, isMatch) {
         if (isMatch) {
           dbUser.setToken(err, function () {
+            console.log('logged in');
             res.json({description: 'success', token: dbUser.token});
           });
         }
       });
     } else {
+      console.log('try again');
       res.json({description: 'try again', status: 302});
     }
   });

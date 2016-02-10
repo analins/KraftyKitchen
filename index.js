@@ -8,17 +8,18 @@ var loadUser = require('./middleware/loadUser');
 
 var app = express();
 
-app.use(express.static(__dirname + './public'));
+app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(loadUser);
 
-var mongoPath = process.env.MONGOLAB_URI || 'mongodb://localhost/kraftykitchen';
-mongoose.connect(mongoPath);
+// var mongoPath = process.env.MONGOLAB_URI || 'mongodb://localhost/kraftykitchenapp';
+mongoose.connect('mongodb://localhost/kraftykitchenapp');
 
 
 var indexRoute = require('./routes/index');
@@ -29,6 +30,7 @@ app.use('/api/users', usersApi);
 
 
 var port = process.env.PORT || 3000;
+var port = 3000;
 app.listen(port, function () {
   console.log('heyyy ' + port);
 });
