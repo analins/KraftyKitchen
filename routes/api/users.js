@@ -3,7 +3,7 @@ var router = express.Router();
 var User = require('../../models/user');
 
 router.get('/', function (req, res) {
-  user.find({}, function (err, dbUsers) {
+  User.find({}, function (err, dbUsers) {
     res.json({users: dbUsers})
   });
 });
@@ -17,7 +17,7 @@ router.get('/:id', function (req, res, next) {
 });
 
 router.post('/', function (req, res) {
-  var newUser = new User(req.body);
+  var newUser = new User(req.body.user);
   newUser.save(function (err, dbUser) {
     console.log(dbUser);
     res.json(dbUser);
@@ -36,7 +36,7 @@ router.post('/authenticate', function (req, res) {
         }
       });
     } else {
-      res.json({description: 'failed', status: 302});
+      res.json({description: 'try again', status: 302});
     }
   });
 });
@@ -50,12 +50,16 @@ router.delete('/:id', function (req, res) {
   });
 });
 
-// router.patch('/:id', function (req, res, next) {
-//   User.findById(req.user._id, function (err, dbUser) {
-//     dbUser. things I have not yet decided...like ingredients and recipes....
-//     dbUser.save();
-//   });
-// });
+router.put('/:id', function (req, res, next) {
+  User.findByIdAndUpdate(req.params.id, req.body.user, function (err, dbUser) {
+ if (err) {return err}
+ if (!user){
+ return next ({status: 404, message: 'not user' })
+}
+    dbUser.save();
+      res.json(user)
+  });
+});
 
 
 //ADD ROUTES FOR USER RECIPE/INGREDIENTS

@@ -8,8 +8,10 @@ var userSchema = mongoose.Schema({
   token: {type: String},
   name: {type: String},
   email: {type: String},
+  newsletter: {type: Boolean}
   // shoppingList: [ingredientSchema],?
-  //userPantry: [ingredientSchema]?
+  //userPantry: [ingredientSchema],?
+  //recipes: [saved recipes from Yummly]
 });
 
 

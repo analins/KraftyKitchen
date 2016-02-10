@@ -1,1 +1,57 @@
-HELLOOOO
+<!DOCTYPE html>
+<html ng-app="kraftyApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Krafty Kitchen</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <script src="/javascripts/app.js"></script>
+    <script src="/javascripts/controllers.js"></script>
+    <script src="/javascripts/services.js"></script>
+  </head>
+  <body>
+    <div >
+      <!-- Sign-Up -->
+      <h4>Sign-Up</h4>
+      <form id="signup" ng-submit="createUser()">
+        <label>username</label>
+        <input type="text" ng-model="newUser.username" placeholder="username">
+        <label>password</label>
+        <input type="password" ng-model="newUser.password" placeholder="password">
+        <input type="submit">
+      </form>
+    </div>
+
+    <div ng-controller="loginController">
+      <!-- Log-In -->
+      <h4>Log-In</h4>
+      <form id='login' ng-submit="logIn()">
+        <label>username</label>
+        <input type="text" ng-model="loginInfo.username" placeholder="username">
+        <label>password</label>
+        <input type="password" ng-model="loginInfo.password" placeholder="password">
+        <input type="submit">
+      </form>
+    </div>
+
+    <!-- FORMS I WILL NEED AT SOME POINT -->
+
+    <form ng-submit="editUser()">
+      <label>Name</label>
+      <input type="text" ng-model="user.name" placeholder="name">
+      <label>Email</label>
+      <input type="text" ng-model="user.email" placeholder="email">
+      <label>Name</label>
+      <input type="text" ng-model="user.name" placeholder="name">
+      <label>Would you like to recieve emails?</label>
+      checkbok
+      <input type="checkbox" ng-model="user.newsletter">
+      <input type="submit">
+    </form>
+
+
+
+  </body>
+</html>
