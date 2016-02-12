@@ -8,6 +8,7 @@ var loadUser = require('./middleware/loadUser');
 
 var app = express();
 
+
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs');
@@ -23,14 +24,17 @@ mongoose.connect('mongodb://localhost/kraftykitchenapp');
 
 
 var indexRoute = require('./routes/index');
+var profileRoute = require('./routes/profile');
 var usersApi = require('./routes/api/users');
+var yummlyApi = require('./routes/api/yummly');
 
 app.use('/', indexRoute);
+app.use('/profile', profileRoute);
 app.use('/api/users', usersApi);
+app.use('/api/yummly', yummlyApi);
 
 
 var port = process.env.PORT || 3000;
-var port = 3000;
 app.listen(port, function () {
   console.log('heyyy ' + port);
 });

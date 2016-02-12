@@ -34,6 +34,7 @@ router.post('/authenticate', function (req, res) {
           dbUser.setToken(err, function () {
             console.log('logged in');
             res.json({description: 'success', token: dbUser.token});
+          
           });
         }
       });
