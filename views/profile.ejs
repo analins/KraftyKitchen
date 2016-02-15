@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="kraftyApp">
+  <head>
+    <% include ./partials/head %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">The Krafty Kitchen</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <div ng-controller="loginController">
+              <button class="navbar-right btn btn-default" ng-show="loggedin" ng-click="logOut()">logout</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid" style="margin-top: 10em">
+
+      <!-- USER SETTINGS -->
+      <div  ng-controller="mainController" class="col-md-3">
+        <h4>User Settings</h4>
+        <form ng-submit="editUser()">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" ng-model="user.name" placeholder="name">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" ng-model="user.email" placeholder="email">
+          </div>
+          <!-- <div class="form-group">
+            <label>username</label>
+            <input type="text" ng-model="user.username" placeholder="name">
+          </div> -->
+          <div class="form-group">
+            <label>Would you like to recieve emails?</label>
+            <input type="checkbox" ng-model="user.newsletter">
+          </div>
+          <div class="form-group">
+            <button type="submit">Save</button>
+          </div>
+        </form>
+      </div>
+
+      <div ng-controller="searchController" class="col-md-3">
+        <h4>Search</h4>
+        <button ng-click="addIngredient()">Add Ingredient</button>
+        <form ng-submit="search()">
+          <div ng-repeat="input in inputs">
+            <input type="text" ng-model="input.value"></div>
+            <input type="submit">
+        </form>
+
+        <div>
+          <ul>
+            <li ng-repeat="recipe in refinedResults">
+              <a href="#"><h4>{{recipe.recipeName}}</h4></a>
+              <!-- <img ng-src="{{recipe.smallImageUrls[0]}}" alt="recipe image" /> -->
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+</html>

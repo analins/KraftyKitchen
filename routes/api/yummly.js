@@ -17,7 +17,7 @@ Yummly.config({
         .then(function(resp){
           res.json(resp.matches);
             resp.matches.forEach(function(recipe){
-                console.log(recipe.recipeName);
+                // console.log(recipe.recipeName);
             });
 
         }).catch(function (error) {
@@ -26,21 +26,19 @@ Yummly.config({
   });
 
 
-	router.get('/detail', function (req, res) {
-		var recipes = [
-		'Apple-Walnut-Cranberry-Salad-898353'
-];
-
-Yummly.getDetails(recipes).then(function (resp) {
-	res.json(resp)
-		resp.forEach(function (recipe) {
-
-				console.log(recipe);
+	router.post('/recipedetails', function (req, res) {
+		var recipes = req.body.recipeIds;
+		Yummly.getDetails(recipes)
+		.then(function (resp) {
+			res.json(resp)
+				resp.forEach(function (recipe) {
+						console.log(recipe.name);
+				});
+		}).catch(function (error) {
+				console.log(error);
 		});
-}).catch(function (error) {
-		console.log(error);
-});
-	});
+			});
+
 
 
   module.exports = router;

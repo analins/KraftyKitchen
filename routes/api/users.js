@@ -33,9 +33,11 @@ router.post('/authenticate', function (req, res) {
         if (isMatch) {
           dbUser.setToken(err, function () {
             console.log('logged in');
+
             res.json({description: 'success', token: dbUser.token});
-          
+
           });
+          // res.redirect('/profile');
         }
       });
     } else {

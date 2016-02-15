@@ -1,9 +1,11 @@
 var app = angular.module('kraftyApp', [
   'ngCookies',
   'ngRoute',
+  'ui.bootstrap',
   'mainController',
   'loginController',
   'searchController',
+  'modalController',
   'usersApiFactory',
   'yummlyApiFactory'
 ]);

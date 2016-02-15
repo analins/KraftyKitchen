@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html ng-app="kraftyApp">
   <head>
-    <meta charset="utf-8">
-    <title>Krafty Kitchen</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
-    <script src="/javascripts/app.js"></script>
-    <script src="/javascripts/controllers.js"></script>
-    <script src="/javascripts/services.js"></script>
+    <% include ./partials/head %>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div ng-controller="loginController" class="col-md-3">
-          <!-- LOG IN -->
-          <h4>Log-In</h4>
-          <form id='login' ng-submit="signIn()">
-            <div class="form-group">
-              <label>username</label>
-              <input type="text" ng-model="loginInfo.username" placeholder="username">
-            </div>
-            <div class="form-group">
-              <label>password</label>
-              <input type="password" ng-model="loginInfo.password" placeholder="password">
-            </div>
-            <div class="form-group">
-              <button type="submit">Login</button>
-              </form>
-              <button ng-click="logOut()">logout</button>
-            </div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">The Krafty Kitchen</a>
         </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <div ng-controller="loginController">
+            <div ng-hide="loggedin">
+              <form  ng-submit="signIn()" class="navbar-form navbar-right" role="login">
+                <div class="form-group">
+                    <input type="text" ng-model="loginInfo.username" class="form-control" placeholder="username">
+                      <input type="password" ng-model="loginInfo.password" class="form-control" placeholder="password">
+                      <button type="submit" class="btn btn-default">Login</button>
+                </div>
+                </form>
+            </div>
+              <button class="navbar-right btn btn-default" ng-show="loggedin" ng-click="logOut()">logout</button>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-        <div ng-controller="mainController" class="col-md-3">
-          <!-- SIGN UP/REGISTER -->
+
+
+
+    <div class="container">
+
+
+        <div ng-controller="mainController">
+
           <h4>Sign-Up</h4>
           <form id="signup" ng-submit="createUser()">
           <div class="form-group">
@@ -49,61 +53,45 @@
           <div class="form-group">
             <button type="submit">Register</button>
           </div>
-          </form>
-        </div>
+          </form> -->
 
-        <!-- USER SETTINGS -->
-        <div class="col-md-3">
-          <h4>User Settings</h4>
-          <form ng-submit="editUser()">
-            <div class="form-group">
-              <label>Name</label>
-              <input type="text" ng-model="user.name" placeholder="name">
+      </div>
+
+        <!-- <div ng-controller="modalController">
+
+        <script type="text/ng-template" id="signupmodal.html">
+
+            <div class="modal-header">
+                <h3 class="modal-title">Sign Up For an Account</h3>
             </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="text" ng-model="user.email" placeholder="email">
+            <div ng-controller="mainController">
+            <div class="modal-body">
+              <form ng-submit="createUser()">
+              <div class="form-group">
+                <label>username</label>
+                <input type="text" ng-model="newUser.username" placeholder="username">
+              </div>
+              <div class="form-group">
+                <label>password</label>
+                <input type="password" ng-model="newUser.password" placeholder="password">
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Register</button>
+              </div>
+              </form>
             </div>
-            <!-- <div class="form-group">
-              <label>username</label>
-              <input type="text" ng-model="user.username" placeholder="name">
-            </div> -->
-            <div class="form-group">
-              <label>Would you like to recieve emails?</label>
-              <input type="checkbox" ng-model="user.newsletter">
-            </div>
-            <div class="form-group">
-              <button type="submit">Save</button>
-            </div>
-          </form>
-        </div>
+          </script>
 
-        <div ng-controller="searchController" class="col-md-3">
-          <h4>Search</h4>
-          <button ng-click="addIngredient()">Add Ingredient</button>
-          <form ng-submit="search()">
-            <div ng-repeat="input in inputs">
-              <input type="text" ng-model="input.value"></div>
-              <input type="submit">
-          </form>
+        <button type="button" class="btn btn-default" ng-click="open()" style="margin-top: 10em">Sign Up</button>
 
-          <div>
-            <ul>
-              <li ng-repeat="recipe in refinedResults">
-                <a href="#"><h4>{{recipe.recipeName}}</h4></a>
-                <img ng-src="recipe.smallImageUrls" alt="recipe image" />
-              </li>
-            </ul>
-
-          </div>
-
-        </div>
+        </div> -->
 
       </div>
 
 
-      </div>
 
     <!-- FORMS I WILL NEED AT SOME POINT -->
+
   </body>
 </html>

@@ -3,7 +3,6 @@ var main = angular.module('mainController', []);
   main.controller('mainController', ['$scope', 'usersApi', function ($scope, usersApi) {
 
     $scope.users = [];
-
     $scope.newUser = {
       // username: null,
       // password: null,
@@ -12,7 +11,6 @@ var main = angular.module('mainController', []);
       // email: null,
       // newsletter: null
     }
-
     $scope.masterUser = angular.copy($scope.newUser);
 
     $scope.getUsers = function () {
@@ -46,9 +44,8 @@ var main = angular.module('mainController', []);
 
   }]);
 
-////////////////////////////////////////////////////////////
+//LOGIN CONTROLLER//
 
-//LOGIN CONTROLLER
 var login = angular.module('loginController', []);
 
   login.controller('loginController', ['$scope', 'usersApi', '$cookies', function ($scope, usersApi, $cookies) {
@@ -60,47 +57,22 @@ var login = angular.module('loginController', []);
         var token = response.data.token;
         console.log(token);
         $cookies.put('token', token);
-        $scope.loginInfo = {};
+        if (token) {
+          $scope.loggedin = true;
+          $scope.currentUser = $cookies.get('user');
+        }else{
+          $scope.loggedin = false;
+        }
+
       });
     }
 
     $scope.logOut = function () {
       $cookies.remove('token');
       console.log('logged out');
+      $scope.loggedin = false;
     }
 
 }]);
 
-////////////////////////////////////////////////////////////
-
-//SEARCH CONTROLLER
-var search = angular.module('searchController', []);
-
-  search.controller('searchController', ['$scope','yummlyApi', function ($scope, yummlyApi) {
-    $scope.inputs = [];
-    $scope.ingredients = [];
-    $scope.refinedResults = [];
-
-    $scope.addIngredient = function () {
-      $scope.inputs.push({});
-    }
-
-    $scope.search = function () {
-      for (var i = 0; i < $scope.inputs.length; i++) {
-        $scope.ingredients.push($scope.inputs[i].value);
-        console.log($scope.ingredients);
-      }
-
-      ////////////////////
-      yummlyApi.getResults($scope.ingredients).then(function(response) {
-        for (var i = 0; i < response.data.length; i++) {
-          if (response.data[i].ingredients.length === $scope.ingredients.length) {
-              $scope.refinedResults.push(response.data[i]);
-              console.log($scope.refinedResults);
-          }
-        }
-      });
-
-    }
-
-  }]);
+///////////////////////////////////////////////////////////
