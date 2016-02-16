@@ -19,8 +19,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(loadUser);
 
-// var mongoPath = process.env.MONGOLAB_URI || 'mongodb://localhost/kraftykitchenapp';
-mongoose.connect('mongodb://localhost/kraftykitchenapp');
+var mongoPath = process.env.MONGOLAB_URI || 'mongodb://localhost/kraftykitchenapp';
+mongoose.connect(mongoPath);
 
 
 var indexRoute = require('./routes/index');
