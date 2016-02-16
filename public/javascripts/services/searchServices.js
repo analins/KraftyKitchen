@@ -11,9 +11,9 @@ var yum = angular.module('yummlyApiFactory', []);
     }
 
     yummlyInterface.getRecipe = function (recipes) {
-      var url = searchUrl + '/recipedetails';
+      var url = searchUrl + '/results' ;
       var payload = {recipes: recipes}
-      return $http.get(url, payload);
+      return $http.post(url, payload);
     }
     return yummlyInterface;
   }]);

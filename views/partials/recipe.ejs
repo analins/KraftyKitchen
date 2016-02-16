@@ -1,0 +1,10 @@
+
+<div class="recipe">
+  <h3>{{recipe.name}}</h3>
+  <h4>Ingredients</h4>
+  <ul>
+    <li ng-repeat="line in ingredientLines"></li>
+  </ul>
+  <img ng-src="{{recipe.images.hostedLargeUrl}}" alt="" />
+  <a href="{{recipe.attribution.url}}">Get Instructions</a>
+</div>

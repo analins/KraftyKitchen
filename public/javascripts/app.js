@@ -13,7 +13,7 @@ var app = angular.module('kraftyApp', [
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     .when('/recipedetails/:id', {
-      templateUrl: '/templates/recipedetails.ejs',
+      templateUrl: '/partials/recipe.ejs',
       controller: 'searchController'
     })
     .otherwise ({

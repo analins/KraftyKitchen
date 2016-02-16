@@ -21,10 +21,46 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid" style="margin-top: 10em">
 
-      <!-- USER SETTINGS -->
-      <div  ng-controller="mainController" class="col-md-3">
+    <div class="container-fluid profile">
+
+        <div class="row">
+          <div ng-controller="searchController">
+            <!-- Search Bar -->
+            <div class="col-md-3 search-bar">
+              <div class="contents">
+                <h4>ADD INGREDIENTS</h4>
+                <button ng-click="addIngredient()" class="btn-outline redbtn round">+</button>
+                <p>add ingredients you currently have to search for recipes that you can make without having to go shopping!</p>
+
+                <form ng-submit="search()">
+                  <div ng-repeat="input in inputs">
+                    <input type="text" ng-model="input.value"></div>
+                    <input type="submit" class="btn-outline redbtn" value="SEARCH">
+                  </form>
+              </div>
+            </div>
+            <!-- Results -->
+            <div class="col-md-8 search-results">
+              <ul>
+                <!-- on click will ngRoute to recipe view -->
+                <li ng-repeat="recipe in refinedResults">
+                  <a href="#" ng-click="getRecipeResults(recipeId)"><h4>{{recipe.recipeName}}</h4></a>
+                  <!-- <img ng-src="{{recipe.smallImageUrls[0]}}" alt="recipe image" /> -->
+                </li>
+              </ul>
+              <div class="recipes" ng-view>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      <!-- USER SETTINGS  -->
+      <!-- This will be in a modal  -->
+      <!-- <div  ng-controller="mainController" class="col-md-3">
         <h4>User Settings</h4>
         <form ng-submit="editUser()">
           <div class="form-group">
@@ -39,7 +75,7 @@
             <label>username</label>
             <input type="text" ng-model="user.username" placeholder="name">
           </div> -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Would you like to recieve emails?</label>
             <input type="checkbox" ng-model="user.newsletter">
           </div>
@@ -47,28 +83,7 @@
             <button type="submit">Save</button>
           </div>
         </form>
-      </div>
-
-      <div ng-controller="searchController" class="col-md-3">
-        <h4>Search</h4>
-        <button ng-click="addIngredient()">Add Ingredient</button>
-        <form ng-submit="search()">
-          <div ng-repeat="input in inputs">
-            <input type="text" ng-model="input.value"></div>
-            <input type="submit">
-        </form>
-
-        <div>
-          <ul>
-            <li ng-repeat="recipe in refinedResults">
-              <a href="#"><h4>{{recipe.recipeName}}</h4></a>
-              <!-- <img ng-src="{{recipe.smallImageUrls[0]}}" alt="recipe image" /> -->
-            </li>
-          </ul>
-
-        </div>
-
-      </div>
+      </div> -->
 
     </div>
   </body>
