@@ -43,6 +43,7 @@ router.post('/authenticate', function (req, res) {
     } else {
       console.log('try again');
       res.json({description: 'try again', status: 302});
+      res.redirect('/')
     }
   });
 });

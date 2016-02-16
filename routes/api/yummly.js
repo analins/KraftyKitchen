@@ -26,10 +26,10 @@ Yummly.config({
 
 
 	router.post('/results', function (req, res) {
-		var recipes = req.body.recipeIds;
+		var recipes = req.body.recipes;
 		Yummly.getDetails(recipes)
 		.then(function (resp) {
-			res.json(resp);
+				res.json(resp);
 				resp.forEach(function (recipe) {
 						console.log(recipe.name);
 				});

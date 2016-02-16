@@ -6,6 +6,7 @@ var search = angular.module('searchController', []);
     $scope.ingredients = [];
     $scope.refinedResults = [];
     $scope.recipeIds = [];
+    $scope.recipeDetails = []
 
     $scope.addIngredient = function () {
       $scope.inputs.push({});
@@ -28,21 +29,26 @@ var search = angular.module('searchController', []);
           $scope.recipeIds.push($scope.refinedResults[i].id);
         }
         console.log($scope.recipeIds);
-        return $scope.recipeIds;
+
       });
 
     }
 
-    $scope.getRecipeResults = function(recipeId){
+    $scope.getRecipeResults = function(){
 
       yummlyApi.getRecipe($scope.recipeIds).then(function (response) {
-        console.log(response);
-
-        // for (var i = 0; i < response.data.length; i++) {
-        //   console.log(response.data[i]);
-        // }
-      })
+        for (var i = 0; i < response.data.length; i++) {
+          $scope.recipeDetails.push(response.data[i]);
+        }
+        console.log($scope.recipeDetails);
+      });
 
     }
+
+  }]);
+
+
+  var singleRecipe = angular.module('recipeController', []);
+  singleRecipe.controller('recipeController', ['$scope','yummlyApi',function ($scope, yummlyApi) {
 
   }]);

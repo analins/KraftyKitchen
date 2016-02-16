@@ -48,7 +48,7 @@ var main = angular.module('mainController', []);
 
 var login = angular.module('loginController', []);
 
-  login.controller('loginController', ['$scope', 'usersApi', '$cookies', function ($scope, usersApi, $cookies) {
+  login.controller('loginController', ['$scope', 'usersApi', '$location', '$cookies', function ($scope, usersApi, $location, $cookies) {
     $scope.users = [];
     $scope.loginInfo = {};
 
@@ -59,7 +59,7 @@ var login = angular.module('loginController', []);
         $cookies.put('token', token);
         if (token) {
           $scope.loggedin = true;
-          $scope.currentUser = $cookies.get('user');
+          $location.path('/profile');
         }else{
           $scope.loggedin = false;
         }
@@ -71,8 +71,7 @@ var login = angular.module('loginController', []);
       $cookies.remove('token');
       console.log('logged out');
       $scope.loggedin = false;
+      $location.path('/');
     }
 
 }]);
-
-///////////////////////////////////////////////////////////

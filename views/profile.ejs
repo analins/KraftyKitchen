@@ -16,7 +16,9 @@
           <a class="navbar-brand">The Krafty Kitchen</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-              <button class="navbar-right btn btn-outline logout"  ng-click="logOut()">logout</button>
+            <div ng-controller="loginController">
+              <button class="navbar-right btn btn-outline logout"  ng-click="logOut()">LOGOUT</button>
+            </div>
           </div>
         </div>
       </div>
@@ -40,14 +42,30 @@
                   </form>
               </div>
             </div>
+
             <!-- Results -->
             <div class="col-md-8 search-results">
-              <ul>
+              <h5 style="margin-top: 10em"><a ng-click="getRecipeResults()">Show Results</a></h5>
+              <ul >
                 <!-- on click will ngRoute to recipe view -->
-                <li ng-repeat="recipe in refinedResults">
-                  <a href="#" ng-click="getRecipeResults(recipeId)"><h4>{{recipe.recipeName}}</h4></a>
-                  <!-- <img ng-src="{{recipe.smallImageUrls[0]}}" alt="recipe image" /> -->
+                <div class="row">
+                <li ng-repeat="recipe in recipeDetails">
+
+                        <div class="col-md-4">
+                          <div class="thumbnail">
+                            <img ng-src="{{recipe.images[0].hostedLargeUrl}}" alt="recipe image">
+                            <div class="caption">
+                              <h5>{{recipe.name}}</h5>
+                              <a>{{recipe.source.sourceRecipeUrl}}</a>
+                            </div>
+                          </div>
+                        </div>
+                        
+                  <!-- <a href="#"><h4>{{recipe.name}}</h4></a>
+                  <a>{{recipe.source.sourceRecipeUrl}}</a>
+                  <img ng-src="{{recipe.images[0].hostedLargeUrl}}" alt="recipe image"> -->
                 </li>
+                </div>
               </ul>
               <div class="recipes" ng-view>
 

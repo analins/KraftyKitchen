@@ -12,7 +12,7 @@ var yum = angular.module('yummlyApiFactory', []);
 
     yummlyInterface.getRecipe = function (recipes) {
       var url = searchUrl + '/results' ;
-      var payload = {recipes: recipes}
+      var payload = {recipes: recipes};
       return $http.post(url, payload);
     }
     return yummlyInterface;
