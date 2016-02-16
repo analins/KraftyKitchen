@@ -13,6 +13,32 @@ body {
   overflow: hidden;
 }
 
+.container {
+  margin-top: 10em;
+}
+
+/*NAVBAR*/
+
+nav .container-fluid {
+  background-color: #DC143C;
+}
+
+.navbar-default .navbar-brand {
+    font-family: 'Leckerli One', cursive;
+    color: #fff;
+    font-size: 1.75em;
+}
+
+.navbar-default .navbar-brand:hover{
+  color: #fff;
+}
+
+.icon-bar {
+  color: #fff;
+}
+
+/*ABOUT */
+
 .about-container {
   width: 60em;
   padding: 1em;
@@ -38,29 +64,16 @@ body {
   margin-left: 50em;
 }
 
+/*MODAL*/
 
-.container {
-  margin-top: 10em;
-}
-
-nav .container-fluid {
+.modal-header, .modal-body, .modal-footer{
   background-color: #DC143C;
-}
-
-.navbar-default .navbar-brand {
-    font-family: 'Leckerli One', cursive;
-    color: #fff;
-    font-size: 1.75em;
-}
-
-.navbar-default .navbar-brand:hover{
   color: #fff;
 }
-
-.icon-bar {
-  color: #fff;
+.signup-form {
+  width: 75%;
+  margin: auto;
 }
-
 
 /*BUTTONS*/
 
