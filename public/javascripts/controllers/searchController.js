@@ -23,15 +23,16 @@ var search = angular.module('searchController', []);
               $scope.refinedResults.push(response.data[i]);
           }
         }
-        console.log($scope.refinedResults);
+        // console.log($scope.refinedResults);
         for (var i = 0; i < $scope.refinedResults.length; i++) {
           $scope.recipeIds.push($scope.refinedResults[i].id);
         }
-        console.log($scope.recipeIds);
+        return $scope.recipeIds;
       });
 
       yummlyApi.getRecipe($scope.recipeIds).then(function (response) {
-        console.log(response.data);
+        console.log($scope.recipeIds);
+
         // for (var i = 0; i < response.data.length; i++) {
         //   console.log(response.data[i]);
         // }

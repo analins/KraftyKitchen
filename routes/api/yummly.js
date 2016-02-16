@@ -9,15 +9,13 @@ Yummly.config({
 
   router.post('/', function (req, res) {
     Yummly.query()
-        // .maxResults(20)
 				.allowedIngredients(req.body.ingredients)
 				.maxResults(40)
-        // .requirePictures(true)
         .get()
         .then(function(resp){
           res.json(resp.matches);
             resp.matches.forEach(function(recipe){
-                // console.log(recipe.recipeName);
+              console.log(recipe.id);
             });
 
         }).catch(function (error) {
@@ -26,11 +24,11 @@ Yummly.config({
   });
 
 
-	router.post('/recipedetails', function (req, res) {
+	router.get('/:id', function (req, res) {
 		var recipes = req.body.recipeIds;
 		Yummly.getDetails(recipes)
 		.then(function (resp) {
-			res.json(resp)
+			res.json(resp.recipes)
 				resp.forEach(function (recipe) {
 						console.log(recipe.name);
 				});
