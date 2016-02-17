@@ -44,14 +44,12 @@
             </div>
 
             <!-- Results -->
-            <div class="col-md-8 search-results">
-              <!-- <h5 style="margin-top: 10em"><a ng-click="getRecipeResults()">Show Results</a></h5> -->
-              <ul >
-                <!-- on click will ngRoute to recipe view -->
-                <div class="row">
+            <div class="col-md-9 search-results">
+              <ul class="recipe-results">
+              </ul>
                 <li ng-repeat="recipe in recipeDetails">
 
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                           <div class="thumbnail">
                             <img ng-src="{{recipe.images[0].hostedLargeUrl}}" alt="recipe image">
                             <div class="caption">
@@ -59,15 +57,21 @@
                               <a>{{recipe.source.sourceRecipeUrl}}</a>
                             </div>
                           </div>
+                        </div> -->
+                        <div class="jumbotron">
+                          <div class="text-contents">
+                            <h2>{{recipe.name}}</h2>
+                            <a ng-href="{{recipe.images[0].hostedLargeUrl}}">GET RECIPE</a>
+                          </div>
+                          <img ng-src="{{recipe.images[0].hostedLargeUrl}}" alt="" />
                         </div>
-
                   <!-- <a href="#"><h4>{{recipe.name}}</h4></a>
                   <a>{{recipe.source.sourceRecipeUrl}}</a>
                   <img ng-src="{{recipe.images[0].hostedLargeUrl}}" alt="recipe image"> -->
                 </li>
                 </div>
               </ul>
-              <div class="recipes" ng-view>
+              <!-- <div class="recipes" ng-view> -->
 
               </div>
             </div>
