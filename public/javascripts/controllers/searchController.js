@@ -29,19 +29,23 @@ var search = angular.module('searchController', []);
           $scope.recipeIds.push($scope.refinedResults[i].id);
         }
         console.log($scope.recipeIds);
-
+        $scope.inputs = [];
       });
 
     }
+      $scope.$watchCollection('recipeIds', function (newVal, oldVal) {
+
+        yummlyApi.getRecipe(newVal).then(function (response) {
+          for (var i = 0; i < response.data.length; i++) {
+            $scope.recipeDetails.push(response.data[i]);
+          }
+          console.log($scope.recipeDetails);
+        });
+    })
 
     $scope.getRecipeResults = function(){
 
-      yummlyApi.getRecipe($scope.recipeIds).then(function (response) {
-        for (var i = 0; i < response.data.length; i++) {
-          $scope.recipeDetails.push(response.data[i]);
-        }
-        console.log($scope.recipeDetails);
-      });
+
 
     }
 

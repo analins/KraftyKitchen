@@ -37,13 +37,12 @@ router.post('/authenticate', function (req, res) {
             res.json({description: 'success', token: dbUser.token});
 
           });
-          // res.redirect('/profile');
         }
       });
     } else {
       console.log('try again');
       res.json({description: 'try again', status: 302});
-      res.redirect('/')
+
     }
   });
 });

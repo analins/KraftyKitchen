@@ -59,9 +59,10 @@ var login = angular.module('loginController', []);
         $cookies.put('token', token);
         if (token) {
           $scope.loggedin = true;
-          $location.path('/profile');
+          // $location.path('/profile');
         }else{
           $scope.loggedin = false;
+          // $location.path('/');
         }
 
       });
@@ -71,7 +72,7 @@ var login = angular.module('loginController', []);
       $cookies.remove('token');
       console.log('logged out');
       $scope.loggedin = false;
-      $location.path('/');
+      // $location.path('/');
     }
 
 }]);
