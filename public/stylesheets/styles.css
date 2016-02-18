@@ -18,10 +18,12 @@ body {
 }
 
 /*NAVBAR*/
-
+nav {
+  z-index: 5000;
+}
 nav .container-fluid {
   background-color: #DC143C;
-  z-index: 5000;
+
 }
 
 .navbar-default .navbar-brand {
@@ -130,11 +132,13 @@ nav .container-fluid {
   margin: .3em;
 }
 
-
-.recipe-results {
-  margin-top: 5em;
+.search-results {
   height: 100vh;
   overflow: scroll;
+}
+.recipe-results {
+  margin-top: 5em;
+
 }
 .jumbotron {
   width: 100%;
@@ -163,7 +167,7 @@ nav .container-fluid {
 }
 
 .text-contents {
-  z-index: 2000;
+  z-index: 200;
   position: absolute;
   margin: auto;
   text-align: left;
