@@ -129,16 +129,12 @@ nav .container-fluid {
   margin: .3em;
 }
 
-.search-results {
 
-
-}
 .recipe-results {
   margin-top: 5em;
 }
 .jumbotron {
   width: 100%;
-
   padding: 0;
   height: 25em;
   box-shadow: 3px 0 15px lightgray;
@@ -168,10 +164,13 @@ nav .container-fluid {
   position: absolute;
   margin: auto;
   text-align: left;
+  color: #fff;
+  text-shadow: 1px 1px 5px grey;
+
 }
 
 .text-contents a {
-  ma
+  color: #DC143C;
 }
 
 li {
