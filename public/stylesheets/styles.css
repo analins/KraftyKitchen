@@ -21,6 +21,7 @@ body {
 
 nav .container-fluid {
   background-color: #DC143C;
+  z-index: 5000;
 }
 
 .navbar-default .navbar-brand {
@@ -132,6 +133,8 @@ nav .container-fluid {
 
 .recipe-results {
   margin-top: 5em;
+  height: 100vh;
+  overflow: scroll;
 }
 .jumbotron {
   width: 100%;
