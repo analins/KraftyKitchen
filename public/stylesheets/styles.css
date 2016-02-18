@@ -165,12 +165,14 @@ nav .container-fluid {
   margin: auto;
   text-align: left;
   color: #fff;
+  font-weight: bold;
   text-shadow: 1px 1px 5px grey;
 
 }
 
 .text-contents a {
   color: #DC143C;
+  font-weight: bold;
 }
 
 li {
