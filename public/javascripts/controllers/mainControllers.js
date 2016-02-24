@@ -4,12 +4,6 @@ var main = angular.module('mainController', []);
 
     $scope.users = [];
     $scope.newUser = {
-      // username: null,
-      // password: null,
-      // token: null,
-      // name: null,
-      // email: null,
-      // newsletter: null
     }
     $scope.masterUser = angular.copy($scope.newUser);
 
@@ -48,7 +42,7 @@ var main = angular.module('mainController', []);
 
 var login = angular.module('loginController', []);
 
-  login.controller('loginController', ['$scope', 'usersApi', '$location', '$cookies', function ($scope, usersApi, $location, $cookies) {
+  login.controller('loginController', ['$scope', 'usersApi', '$cookies', function ($scope, usersApi, $cookies) {
     $scope.users = [];
     $scope.loginInfo = {};
 
@@ -59,10 +53,10 @@ var login = angular.module('loginController', []);
         $cookies.put('token', token);
         if (token) {
           $scope.loggedin = true;
-          // $location.path('/profile');
+            window.location='/profile';
         }else{
           $scope.loggedin = false;
-          // $location.path('/');
+          window.location='/'
         }
 
       });
@@ -72,7 +66,7 @@ var login = angular.module('loginController', []);
       $cookies.remove('token');
       console.log('logged out');
       $scope.loggedin = false;
-      // $location.path('/');
+      window.location='/';
     }
 
 }]);

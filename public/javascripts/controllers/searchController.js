@@ -41,18 +41,6 @@ var search = angular.module('searchController', []);
           }
           console.log($scope.recipeDetails);
         });
-    })
-
-    $scope.getRecipeResults = function(){
-
-
-
-    }
-
-  }]);
-
-
-  var singleRecipe = angular.module('recipeController', []);
-  singleRecipe.controller('recipeController', ['$scope','yummlyApi',function ($scope, yummlyApi) {
+    });
 
   }]);
